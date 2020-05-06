@@ -12,6 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // Register the location for handlebars partials here:
 
 hbs.registerPartials(path.join(__dirname, 'views/partials'))
@@ -36,6 +37,7 @@ app.get('/random-beers', (request, response) => {
     .getRandom()
     .then(responseFromApi => {
       const randomBeer = responseFromApi[0];
+      console.log(randomBeer)
       response.render('random-beer', {randomBeer} )
     }) 
     .catch(error => console.log(error));
